@@ -42,14 +42,14 @@ Packages > PLATEAU SDK for Unity > Runtime > CityExport > ModelConvert > SubMesh
 ![image](https://github.com/user-attachments/assets/a7c6a1a1-cd19-44b6-90b5-6e704b88bc50)
 node.LocalScaleとconvertedEulerの2行をコメントアウトして、下記を追記して保存する。 <br />
 ```csharp
-            //node.LocalScale = vertexConverter.ConvertOnlyCoordinateSystem(trans.localScale).ToPlateauVector() *
-            //                  vertexConverter.ConvertOnlyCoordinateSystem(Vector3.one).ToPlateauVector();
-            node.LocalScale = vertexConverter.ConvertOnlyCoordinateSystem(trans.localScale).ToPlateauVector() *
-                              vertexConverter.ConvertOnlyCoordinateSystem(new Vector3(-1,1,-1)).ToPlateauVector();
+//node.LocalScale = vertexConverter.ConvertOnlyCoordinateSystem(trans.localScale).ToPlateauVector() *
+//                  vertexConverter.ConvertOnlyCoordinateSystem(Vector3.one).ToPlateauVector();
+node.LocalScale = vertexConverter.ConvertOnlyCoordinateSystem(trans.localScale).ToPlateauVector() *
+                  vertexConverter.ConvertOnlyCoordinateSystem(new Vector3(-1,1,-1)).ToPlateauVector();
 ```
 ```csharp
-                //convertedEuler *= -1;
-                convertedEuler *= 1;
+//convertedEuler *= -1;
+convertedEuler *= 1;
 ```
 
 あるいはSDKのバージョンが同じであれば、本Git Hubから公開されているcsファイルに差し替えてもよい。
