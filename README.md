@@ -1,0 +1,2 @@
+# PLATEAU2VISSIM-via-Unity
+PLATEAUで公開の3D都市モデルをUnityを介してPTV Vissimにインポート可能なOBJ形式にまとめて変換し、Vissimの座標系に自動でインポートするツールです
