@@ -104,11 +104,11 @@ PTV Vissimを開き、リンクの編集モードで標高を設定したいリ�
 ![image](https://github.com/user-attachments/assets/59a55c64-35f3-43ed-8352-be3f3c1147ed)　
 
 ### Unityと座標系を合わせる方法
-Vissimの追加モジュールDriving Simulator Interface（DSI)を活用して、Unityとリアルタイム連携することができる。<br />
+Vissimの追加モジュールDriving Simulator Interface（DSI)を活用すれば、Unityとリアルタイム連携することができる。<br />
 このときUnityとVissimで原点を一致させないと、下記画像のようにUnityが動かす車両の位置がVissim上でズレてしまう（逆も同様）。<br />
 <img width="900" alt="Offset1" src="https://github.com/user-attachments/assets/493c5e68-a565-4528-83d4-92c67206a30e" />
 
-そこでEdit > Move Network - Adjust network coordinates and backgound mapで3Dモデルの座標を原点（0,0）となるように動かす。<br />
+Edit > Move Network - Adjust network coordinates and backgound mapで3Dモデルの座標を原点（0,0）となるように動かす。<br />
 <img width="600" alt="Offset2" src="https://github.com/user-attachments/assets/f40a85c8-24ab-44f5-8a65-e1b105fb819d" />
 
 これでVissimとUnityの原点が一致し、お互いの車両の位置が合致する。
@@ -116,7 +116,7 @@ Vissimの追加モジュールDriving Simulator Interface（DSI)を活用して�
 ## 動作環境  
 - Unity 2022.3.25f1 / PLATEAU SDK for Unity v3.1.1 alpha
 - Python 3.11 + pywin32  
-- PTV Vissim 2025 SP08 / 2025 SP03 <br />
+- PTV Vissim 2024 SP12 / 2025 SP08 <br />
   ※現在OBJファイルのインポートをPTV Vissimが公式にはサポートしていないため、今後の開発によっては仕様が変わり本ツールが利用できなくなる可能性があります。予めご了承ください。  
 
 ## ライセンス  
