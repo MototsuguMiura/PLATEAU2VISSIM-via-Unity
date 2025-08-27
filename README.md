@@ -67,7 +67,7 @@ convertedEuler *= 1;
 公式サイトを参考に作業を行う。その際に下記オプションを設定する。
 - 出力形式：OBJ
 - 座標変換：ローカル
-- 座標軸：ＷＵＮ（右て座標系,Y軸が上,Ｚ軸が北）
+- 座標軸：ＷＵＮ（右手座標系,Y軸が上,Ｚ軸が北）
 ![image](https://github.com/user-attachments/assets/a9051af3-6b86-439e-8271-085c0e860969)
 
 ### Vissimへのインポート
@@ -103,6 +103,15 @@ PTV Vissimを開き、リンクの編集モードで標高を設定したいリ�
 標高インポート後も3D都市モデルに道路が埋没している場合は、Static 3D ModelsのCoordZOffsetあるいは対応するLevelのzCoordを-1程度にすると、見栄えがよくなる。<br />
 ![image](https://github.com/user-attachments/assets/59a55c64-35f3-43ed-8352-be3f3c1147ed)　
 
+### Unityと座標系を合わせる方法
+Vissimの追加モジュールDriving Simulator Interface（DSI)を活用して、Unityとリアルタイム連携することができる。<br />
+このときUnityとVissimで原点を一致させないと、下記画像のようにUnityが動かす車両の位置がVissim上でズレてしまう（逆も同様）。<br />
+<img width="900" alt="Offset1" src="https://github.com/user-attachments/assets/493c5e68-a565-4528-83d4-92c67206a30e" />
+
+そこでEdit > Move Network - Adjust network coordinates and backgound mapで3Dモデルの座標を原点（0,0）となるように動かす。<br />
+<img width="600" alt="Offset2" src="https://github.com/user-attachments/assets/f40a85c8-24ab-44f5-8a65-e1b105fb819d" />
+
+これでVissimとUnityの原点が一致し、お互いの車両の位置が合致する。
 
 ## 動作環境  
 - Unity 2022.3.25f1 / PLATEAU SDK for Unity v3.1.1 alpha
