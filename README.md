@@ -81,7 +81,9 @@ Vissimを開き、メニューバーのActions > Run Script File　でImporter.p
 
 なお、建築物、土地起伏に標高が設定されているため、道路ネットワークに標高が設定されていないと道路が埋没してしまう。
 
-### 基盤地図情報 数値標高モデルのダウンロード
+
+## 標高・座標合わせについて
+### 基盤地図情報 数値標高モデルを利用する場合（非推奨）
 国土地理院の[基盤地図情報](https://fgd.gsi.go.jp/download/menu.php)にアクセスして、数値標高モデル「ファイル選択へ」をクリック。<br />
 メッシュ番号や地図上でダウンロードしたい場所を選択リストに追加する。「ダウンロードファイル確認へ」をクリックして、数値標高モデルをダウンロードし、適当なフォルダに解凍する。<br />
 ![image](https://github.com/user-attachments/assets/7d1e808e-9abb-47ed-aadb-168fe1768f29)
@@ -95,10 +97,16 @@ Vissimを開き、メニューバーのActions > Run Script File　でImporter.p
 
 作成されたmerge.tifファイルをVissimのファイルがある場所に移動させる。
 
+### PLATEAU 地形データ（DEM）を利用する場合（推奨）
+こちらの方が同じデータソースを利用するため、標高の誤差が少なくなるので現在はこちらを推奨。<br />
+[PLATEAU QGIS Plugin](https://github.com/Project-PLATEAU/plateau-qgis-plugin/blob/main/docs/manual.md)を参考に、PLATEAU 地形モデルをメッシュとして読込み、メッシュをラスタライズする。<br />
+ラスタライズの際に出力ラスタとしてファイル名を指定するとGeoTiff形式で保存される。<br />
+作成されたtifファイルをVissimのファイルがある場所に移動させる。
+
 ### Vissimへの標高データのインポート
 PTV Vissimを開き、リンクの編集モードで標高を設定したいリンクをすべて選択する。この状態で右クリック（またはCtrl + 右クリック）、Import height from GeoTiff datasource..を選択。
 先程作成したmerge.tifを選択すると、リンクのZOffsetが自動で変更される。（ただし、あくまで地表高さのため橋や立体交差などは反映されないので注意）<br />
-![image](https://github.com/user-attachments/assets/032751ce-b188-4c8f-a7f5-0bbfa8eab376)
+<img width="600" alt="import-height" src="https://github.com/user-attachments/assets/032751ce-b188-4c8f-a7f5-0bbfa8eab376" />
 
 標高インポート後も3D都市モデルに道路が埋没している場合は、Static 3D ModelsのCoordZOffsetあるいは対応するLevelのzCoordを-1程度にすると、見栄えがよくなる。<br />
 ![image](https://github.com/user-attachments/assets/59a55c64-35f3-43ed-8352-be3f3c1147ed)　
@@ -114,7 +122,7 @@ Edit > Move Network - Adjust network coordinates and backgound mapで3Dモデル
 これでVissimとUnityの原点が一致し、お互いの車両の位置が合致する。
 
 ## 動作環境  
-- Unity 2022.3.25f1 / PLATEAU SDK for Unity v3.1.1 alpha
+- Unity 2022.3.25f1 / PLATEAU SDK for Unity v3.1.1 alpha / PLATEAU QGIS Plugin 0.1.0
 - Python 3.11 + pywin32  
 - PTV Vissim 2024 SP12 / 2025 SP08 <br />
   ※現在OBJファイルのインポートをPTV Vissimが公式にはサポートしていないため、今後の開発によっては仕様が変わり本ツールが利用できなくなる可能性があります。予めご了承ください。  
@@ -123,6 +131,7 @@ Edit > Move Network - Adjust network coordinates and backgound mapで3Dモデル
 - 本ツールは、MITライセンスに従います。
 - [Unity](https://unity.com/ja)は、Unity Technologies社の製品です。利用料金はUnity社にお問合せください。
 - [PLATEAU SDK for Unity](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/index.html)の著作権は国土交通省に帰属します。
+- [PLATEAU QGIS Plugin](https://github.com/Project-PLATEAU/plateau-qgis-plugin/tree/main)の著作権は国土交通省に帰属します。
 - [基盤地図情報 標高DEMデータ変換ツール](https://www.ecoris.co.jp/contents/demtool.html)の著作権は株式会社エコリスに帰属します。
 - [PTV Vissim](https://www.ptvgroup.com/ja/%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/%E8%A3%BD%E5%93%81/ptv-vissim/)は、PTV Groupの販売する有償のソフトウェアです。[こちら](https://www.ptvgroup.com/ja/%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/%E8%A3%BD%E5%93%81/ptv-vissim/%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88/)からお問合せください。
 
